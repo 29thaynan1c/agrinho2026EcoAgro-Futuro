@@ -1,27 +1,86 @@
-function calcularImpacto() {
-    // Captura o elemento select do HTML
-    const dropdown = document.getElementById("pratica-agro");
-    // Pega o valor da porcentagem selecionada
-    const porcentagemEconomia = parseInt(dropdown.value);
-    // Captura a div onde o resultado será exibido
-    const resultadoDiv = document.getElementById("resultado");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('material-form');
+  const materialsList = document.getElementById('materials-list');
+  const filterSelect = document.getElementById('filter-materia');
 
-    if (porcentagemEconomia === 0) {
-        resultadoDiv.style.color = "#d32f2f";
-        resultadoDiv.innerHTML = "Por favor, selecione uma prática válida!";
-        return;
+  
+  let materials = [
+    {
+      id: 1,
+      titulo: 'Exercícios de Álgebra Linear',
+      materia: 'Matemática',
+      link: 'https://drive.google.com'
+    },
+    {
+      id: 2,
+      titulo: 'Resumo sobre Segunda Guerra',
+      materia: 'História',
+      link: 'https://notion.so'
+    }
+  ];
+
+  
+  function renderMaterials(filter = 'todos') {
+    materialsList.innerHTML = '';
+
+    const filteredMaterials = filter === 'todos' 
+      ? materials 
+      : materials.filter(item => item.materia === filter);
+
+    if (filteredMaterials.length === 0) {
+      materialsList.innerHTML = '<p style="color: #888;">Nenhum material encontrado para esta matéria.</p>';
+      return;
     }
 
-    // Supondo um consumo médio padrão de 500.000 litros de água por hectare/ano em cultivos irrigados tradicionais
-    const consumoPadrao = 500000;
-    const aguaEconomizada = (consumoPadrao * porcentagemEconomia) / 100;
+    filteredMaterials.forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'material-item';
+      li.innerHTML = `
+        <div>
+          <span class="material-tag">${item.materia}</span>
+          <h4 class="material-title">${item.titulo}</h4>
+        </div>
+        <div class="material-actions">
+          <a href="${item.link}" target="_blank" class="material-link">Acessar Material ↗</a>
+          <button class="btn-delete" onclick="deleteMaterial(${item.id})">Excluir</button>
+        </div>
+      `;
+      materialsList.appendChild(li);
+    });
+  }
 
-    // Altera o estilo e o texto do resultado na tela
-    resultadoDiv.style.color = "#1b4d3e";
-    resultadoDiv.innerHTML = `
-        <strong>Excelente escolha!</strong><br><br>
-        Implementando essa prática, estima-se uma economia de 
-        <span style="color: #2e7d32; font-size: 20px;">${aguaEconomizada.toLocaleString('pt-BR')}</span> 
-        litros de água por hectare ao ano!
-    `;
-}
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const titulo = document.getElementById('titulo').value;
+    const materia = document.getElementById('materia').value;
+    const link = document.getElementById('link').value;
+
+    const newMaterial = {
+      id: Date.now(),
+      titulo,
+      materia,
+      link
+    };
+
+    materials.push(newMaterial);
+    renderMaterials(filterSelect.value);
+
+    form.reset();
+  });
+
+
+  filterSelect.addEventListener('change', (e) => {
+    renderMaterials(e.target.value);
+  });
+
+ 
+  window.deleteMaterial = (id) => {
+    materials = materials.filter(item => item.id !== id);
+    renderMaterials(filterSelect.value);
+  };
+
+
+  renderMaterials();
+});

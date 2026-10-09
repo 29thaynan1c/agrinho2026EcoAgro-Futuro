@@ -1,185 +1,196 @@
-/* Configurações Gerais */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #f4f9f4;
-    color: #333;
+  background-color: #f4f6f9;
+  color: #333;
 }
 
-/* Cabeçalho */
-header {
-    background-color: #1b4d3e;
-    color: white;
-    padding: 20px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.app-container {
+  display: flex;
+  min-height: 100vh;
 }
 
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
+
+.sidebar {
+  width: 240px;
+  background-color: #1e1e2d;
+  color: #fff;
+  padding: 20px;
 }
 
-header .logo span {
-    color: #88d49e;
+.logo h2 {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
 }
 
-header nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 500;
-    transition: color 0.3s;
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-header nav a:hover {
-    color: #88d49e;
+.nav-btn {
+  background: none;
+  border: none;
+  color: #a2a3b7;
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* Banner Principal */
-.hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200') no-repeat center center/cover;
-    height: 70vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding: 0 20px;
+.nav-btn.active, .nav-btn:hover {
+  background-color: #2d2d3f;
+  color: #fff;
 }
 
-.hero h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+
+.main-content {
+  flex: 1;
+  padding: 30px;
+  max-width: 1000px;
 }
 
-.hero p {
-    font-size: 20px;
-    max-width: 600px;
-    margin-bottom: 30px;
+.header {
+  margin-bottom: 25px;
 }
 
-.btn-principal {
-    background-color: #2e7d32;
-    color: white;
-    padding: 12px 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 25px;
-    transition: background 0.3s;
+.header h1 {
+  font-size: 1.8rem;
+  color: #1e1e2d;
 }
 
-.btn-principal:hover {
-    background-color: #1b5e20;
+.header p {
+  color: #6c757d;
 }
 
-/* Seção de Pilares */
-.pilares-section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.pilares-section h2 {
-    color: #1b4d3e;
-    margin-bottom: 40px;
-}
-
-.cards-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
 
 .card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    border-top: 5px solid #2e7d32;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .card h3 {
-    margin-bottom: 15px;
-    color: #2e7d32;
+  margin-bottom: 15px;
+  color: #2c3e50;
 }
 
-/* Seção do Simulador */
-.simulador-section {
-    background-color: #e8f5e9;
-    padding: 60px 20px;
-    text-align: center;
+#material-form {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 2fr 1fr;
+  gap: 10px;
 }
 
-.simulador-section h2 {
-    color: #1b4d3e;
-    margin-bottom: 20px;
+.form-group input, .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
 }
 
-.calculadora {
-    background-color: white;
-    max-width: 500px;
-    margin: 30px auto;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.btn-primary {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
-.calculadora select {
+.btn-primary:hover {
+  background-color: #4338ca;
+}
+
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.materials-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.material-item {
+  border: 1px solid #e5e7eb;
+  border-left: 5px solid #4f46e5;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.material-tag {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  background-color: #e0e7ff;
+  color: #3730a3;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.material-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.material-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.material-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.material-link:hover {
+  text-decoration: underline;
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  #material-form {
+    grid-template-columns: 1fr;
+  }
+  .app-container {
+    flex-direction: column;
+  }
+  .sidebar {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.calculadora button {
-    background-color: #1b4d3e;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    transition: background 0.3s;
-}
-
-.calculadora button:hover {
-    background-color: #113328;
-}
-
-.resultado-box {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f4f9f4;
-    border-left: 5px solid #2e7d32;
-    font-weight: bold;
-    color: #1b4d3e;
-}
-
-/* Rodapé */
-footer {
-    background-color: #1b4d3e;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
+  }
 }

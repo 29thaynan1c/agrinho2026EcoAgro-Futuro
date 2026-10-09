@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoAgro Futuro - Agrinho 2026</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EstudHub - Hub de Estudos</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>📚 EstudHub</h2>
+      </div>
+      <nav class="menu">
+        <button class="nav-btn active" data-target="dashboard">Dashboard</button>
+        <button class="nav-btn" data-target="materias">Minhas Matérias</button>
+      </nav>
+    </aside>
 
-    <header>
-        <div class="logo">EcoAgro <span>Futuro</span></div>
-        <nav>
-            <a href="#pilares">Pilares</a>
-            <a href="#simulador">Simulador</a>
-        </nav>
-    </header>
+    
+    <main class="main-content">
+      <header class="header">
+        <h1>Central de Organização</h1>
+        <p>Reúna todos os seus links, anotações e arquivos em um só lugar.</p>
+      </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>O equilíbrio perfeito entre a alta produtividade no campo e a preservação do nosso meio ambiente.</p>
-            <a href="#simulador" class="btn-principal">Testar Simulador</a>
-        </div>
-    </section>
-
-    <section id="pilares" class="pilares-section">
-        <h2>Nossos Pilares Sustentáveis</h2>
-        <div class="cards-container">
-            <div class="card">
-                <h3>Produtividade</h3>
-                <p>Alimentar o mundo utilizando tecnologias de precisão para otimizar cada hectare plantado.</p>
-            </div>
-            <div class="card">
-                <h3>Preservação</h3>
-                <p>Proteger fontes de água, criar corredores ecológicos e manter o solo vivo e saudável.</p>
-            </div>
-            <div class="card">
-                <h3>Tecnologia</h3>
-                <p>Uso de drones, sensores e IA para reduzir o uso de defensivos e economizar recursos.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="simulador" class="simulador-section">
-        <h2>Simulador de Impacto Agro Verde</h2>
-        <p>Escolha uma prática sustentável abaixo para ver a estimativa de economia de água por hectare ao ano:</p>
-        
-        <div class="calculadora">
-            <select id="pratica-agro">
-                <option value="0">Selecione uma tecnologia...</option>
-                <option value="30">Irrigação por Gotejamento (Economia de 30%)</option>
-                <option value="40">Sensores de Umidade de Solo (Economia de 40%)</option>
-                <option value="15">Plantio Direto na Palha (Economia de 15%)</option>
+      <section class="card form-card">
+        <h3>Adicionar Novo Material</h3>
+        <form id="material-form">
+          <div class="form-group">
+            <input type="text" id="titulo" placeholder="Título (ex: Resumo de Geometria)" required>
+          </div>
+          <div class="form-group">
+            <select id="materia" required>
+              <option value="" disabled selected>Selecione a Matéria</option>
+              <option value="Matemática">Matemática</option>
+              <option value="História">História</option>
+              <option value="Biologia">Biologia</option>
+              <option value="Português">Português</option>
             </select>
-            <button onclick="calcularImpacto()">Calcular Economia</button>
-            
-            <div id="resultado" class="resultado-box">
-                O resultado aparecerá aqui!
-            </div>
+          </div>
+          <div class="form-group">
+            <input type="url" id="link" placeholder="Link do Drive, Notion ou Vídeo" required>
+          </div>
+          <button type="submit" class="btn-primary">Salvar Material</button>
+        </form>
+      </section>
+
+    
+      <section class="card list-card">
+        <div class="list-header">
+          <h3>Seus Materiais Cadastrados</h3>
+          <select id="filter-materia">
+            <option value="todos">Todas as Matérias</option>
+            <option value="Matemática">Matemática</option>
+            <option value="História">História</option>
+            <option value="Biologia">Biologia</option>
+            <option value="Português">Português</option>
+          </select>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 Concurso Agrinho. Desenvolvido com 🌱 para um futuro melhor.</p>
-    </footer>
+        <ul id="materials-list" class="materials-grid">
+          
+        </ul>
+      </section>
+    </main>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
